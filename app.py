@@ -26,7 +26,7 @@ body_mass = st.number_input("Insert the penguin's body mass", 1000, 8000, 3000)
 sex = st.radio("Select penguin's sex", ('Male', 'Female'))
 
 
-API_URL = "http://127.0.0.1:8000/predict"
+api_url = st.secrets['API_URL']
 
 params = {
     'island': island,
@@ -36,6 +36,6 @@ params = {
     'body_mass_g': body_mass,
     'sex': sex
 }
-response = requests.get(API_URL, params=params).json()
+response = requests.get(api_url, params=params).json()
 
 st.markdown(f"## Your penguin is a ....... \n # {response['species']} !!!")
